@@ -15,8 +15,13 @@ import com.hcl.entity.Product;
 @CrossOrigin("http://localhost:4200")
 public interface ProductRepository extends JpaRepository<Product,Long> {
 	
-	// query method to match by categroy id and filter by request param value id
+	// query methods to match by categroy id and filter by request param value id
 	// this is similar to SELECT * FROM product WHERE category_id=?
 	Page<Product> findByCategoryId(@RequestParam("id") Long id, Pageable pageable);
-
+	
+	
+	// Select * FROM Product p WHERE p.name Like  CONCAT('%',:name,'%')
+	Page<Product> findByNameContaining(@RequestParam("name") String name, Pageable pageable);
+	
+	
 }
