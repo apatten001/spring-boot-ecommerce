@@ -14,8 +14,10 @@ import org.springframework.data.rest.webmvc.config.RepositoryRestConfigurer;
 import org.springframework.http.HttpMethod;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
 
+import com.hcl.entity.Country;
 import com.hcl.entity.Product;
 import com.hcl.entity.ProductCategory;
+import com.hcl.entity.State;
 
 @Configuration
 public class MyDataRestConfig implements RepositoryRestConfigurer {
@@ -36,22 +38,26 @@ public class MyDataRestConfig implements RepositoryRestConfigurer {
 		// We will test these using PostMan
 		HttpMethod[] theUnsupportedActions = {HttpMethod.PUT, HttpMethod.POST, HttpMethod.DELETE,HttpMethod.PATCH};
 		
-		config.getExposureConfiguration()
-		.forDomainType(Product.class)
-		.withItemExposure((metdata, httpMethods) -> httpMethods.disable(theUnsupportedActions))
-		.withCollectionExposure((metdata, httpMethods) -> httpMethods.disable(theUnsupportedActions));
 		
-		// These are the methods of ProductCategory that we are going to disable for our page Put Post and Delete
+		// These are the methods of the Classes that we are going to disable for our page Put Post and Delete
 		// We will test these using PostMan
-		config.getExposureConfiguration()
-		.forDomainType(ProductCategory.class)
-		.withItemExposure((metdata, httpMethods) -> httpMethods.disable(theUnsupportedActions))
-		.withCollectionExposure((metdata, httpMethods) -> httpMethods.disable(theUnsupportedActions));
+		disableHttpMethods(ProductCategory.class, config, theUnsupportedActions);
+		disableHttpMethods(Product.class, config, theUnsupportedActions);
+		disableHttpMethods(Country.class, config, theUnsupportedActions);
+		disableHttpMethods(State.class, config, theUnsupportedActions);
 		
 		
 		//helper method to expose ids
 		exposeIds(config);
 		
+	}
+
+	// These are the methods of the Classes that we are going to disable for our page Put Post and Delete
+	private void disableHttpMethods(Class theClass, RepositoryRestConfiguration config, HttpMethod[] theUnsupportedActions) {
+		config.getExposureConfiguration()
+		.forDomainType(theClass)
+		.withItemExposure((metdata, httpMethods) -> httpMethods.disable(theUnsupportedActions))
+		.withCollectionExposure((metdata, httpMethods) -> httpMethods.disable(theUnsupportedActions));
 	}
 	
 	private void exposeIds(RepositoryRestConfiguration config) {
