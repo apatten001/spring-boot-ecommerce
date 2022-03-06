@@ -10,6 +10,8 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import lombok.Getter;
 import lombok.Setter;
 
@@ -32,6 +34,7 @@ public class Country {
 	// set up one-to many relationship
 	
 	@OneToMany(mappedBy = "country")
+	@JsonIgnore // this is a jackson @nnotation that ignores the state field when retirning the json
 	private List<State> states;
 
 }
