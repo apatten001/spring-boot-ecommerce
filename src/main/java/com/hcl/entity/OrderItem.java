@@ -11,9 +11,12 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-import lombok.Data;
 
-@Data
+import lombok.Getter;
+import lombok.Setter;
+
+@Setter
+@Getter
 @Entity
 @Table(name="order_item")
 public class OrderItem {
@@ -35,9 +38,6 @@ public class OrderItem {
 	
 	@Column(name="product_id")
 	private Long productId;
-
-	@Column(name="order_id")
-	private Long orderId;
 	
 	@ManyToOne
 	@JoinColumn(name="order_id")
