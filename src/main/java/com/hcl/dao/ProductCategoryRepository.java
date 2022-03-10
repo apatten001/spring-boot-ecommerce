@@ -8,7 +8,6 @@ import com.hcl.entity.ProductCategory;
 
 // productCategory is the name of the JSON entry : product-category is the path 
 @RepositoryRestResource(collectionResourceRel = "productCategory", path="product-category")
-@CrossOrigin("http://localhost:4200")
 public interface ProductCategoryRepository extends JpaRepository<ProductCategory, Long> {
 
 }
