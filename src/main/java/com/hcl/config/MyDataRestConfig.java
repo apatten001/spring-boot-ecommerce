@@ -16,6 +16,7 @@ import org.springframework.http.HttpMethod;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
 
 import com.hcl.entity.Country;
+import com.hcl.entity.Order;
 import com.hcl.entity.Product;
 import com.hcl.entity.ProductCategory;
 import com.hcl.entity.State;
@@ -48,6 +49,8 @@ public class MyDataRestConfig implements RepositoryRestConfigurer {
 		disableHttpMethods(Product.class, config, theUnsupportedActions);
 		disableHttpMethods(Country.class, config, theUnsupportedActions);
 		disableHttpMethods(State.class, config, theUnsupportedActions);
+		disableHttpMethods(Order.class, config, theUnsupportedActions);
+		
 		
 		
 		//helper method to expose ids
