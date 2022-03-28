@@ -43,12 +43,28 @@
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
 			<scope>runtime</scope>
+<<<<<<< HEAD
+=======
 		</dependency>
 		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+			<scope>provided</scope>
+>>>>>>> bee5ea46e54964eafe6b30a2cadf7452c5ff05d7
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/com.okta.spring/okta-spring-boot-starter -->
+		<dependency>
+<<<<<<< HEAD
 		<groupId>org.projectlombok</groupId>
 		<artifactId>lombok</artifactId>
 		<scope>provided</scope>
 	</dependency>
+=======
+			<groupId>com.okta.spring</groupId>
+			<artifactId>okta-spring-boot-starter</artifactId>
+			<version>2.1.5</version>
+		</dependency>
+>>>>>>> bee5ea46e54964eafe6b30a2cadf7452c5ff05d7
 	</dependencies>
 
 	<build>
