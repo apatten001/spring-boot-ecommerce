@@ -1,7 +1,5 @@
 package com.hcl.config;
 
-<<<<<<< HEAD
-=======
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
@@ -11,32 +9,27 @@ import javax.persistence.metamodel.EntityType;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
->>>>>>> bee5ea46e54964eafe6b30a2cadf7452c5ff05d7
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.rest.core.config.RepositoryRestConfiguration;
 import org.springframework.data.rest.webmvc.config.RepositoryRestConfigurer;
 import org.springframework.http.HttpMethod;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
 
-<<<<<<< HEAD
+
 import com.hcl.entity.Product;
 import com.hcl.entity.ProductCategory;
-=======
+
 import com.hcl.entity.Country;
 import com.hcl.entity.Order;
 import com.hcl.entity.Product;
 import com.hcl.entity.ProductCategory;
 import com.hcl.entity.State;
->>>>>>> bee5ea46e54964eafe6b30a2cadf7452c5ff05d7
+
 
 @Configuration
 public class MyDataRestConfig implements RepositoryRestConfigurer {
 	
-<<<<<<< HEAD
-	@Override
-	public void configureRepositoryRestConfiguration(RepositoryRestConfiguration config, CorsRegistry cors) {
-		
-=======
+
 	@Value("${allowed.origins}")
 	private String[] theAllowedOrigins;
 	private EntityManager entityManager;
@@ -51,12 +44,12 @@ public class MyDataRestConfig implements RepositoryRestConfigurer {
 	public void configureRepositoryRestConfiguration(RepositoryRestConfiguration config, CorsRegistry cors) {
 		
 		
->>>>>>> bee5ea46e54964eafe6b30a2cadf7452c5ff05d7
+
 		// These are the methods of Product that we are going to disable for our page Put Post Patch and Delete
 		// We will test these using PostMan
 		HttpMethod[] theUnsupportedActions = {HttpMethod.PUT, HttpMethod.POST, HttpMethod.DELETE,HttpMethod.PATCH};
 		
-<<<<<<< HEAD
+
 		config.getExposureConfiguration()
 		.forDomainType(Product.class)
 		.withItemExposure((metdata, httpMethods) -> httpMethods.disable(theUnsupportedActions))
@@ -68,7 +61,7 @@ public class MyDataRestConfig implements RepositoryRestConfigurer {
 		.forDomainType(ProductCategory.class)
 		.withItemExposure((metdata, httpMethods) -> httpMethods.disable(theUnsupportedActions))
 		.withCollectionExposure((metdata, httpMethods) -> httpMethods.disable(theUnsupportedActions));
-=======
+
 		
 		// These are the methods of the Classes that we are going to disable for our page Put Post and Delete
 		// We will test these using PostMan
@@ -115,7 +108,7 @@ public class MyDataRestConfig implements RepositoryRestConfigurer {
 		
 		Class[] domainTypes = entityClasses.toArray(new Class[0]);
 		config.exposeIdsFor(domainTypes);
->>>>>>> bee5ea46e54964eafe6b30a2cadf7452c5ff05d7
+
 		
 		
 	}
