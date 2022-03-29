@@ -49,5 +49,5 @@ jobs:
         with:
           app-name: 'horshambags-backend'
           slot-name: 'Production'
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_840D51C6C8A244C1A63E80EB5A18AE80 }}
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_9653722B01454B28AD9C15D681419F6A }}
           package: '*.war'
