@@ -17,7 +17,7 @@ import com.hcl.service.CheckoutService;
 import com.stripe.exception.StripeException;
 import com.stripe.model.PaymentIntent;
 
-
+@CrossOrigin("https://horshambags-frontend.azurewebsites.net/")
 @RestController
 @RequestMapping("/api/checkout")
 public class CheckoutController {
