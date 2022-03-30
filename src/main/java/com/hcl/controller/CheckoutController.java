@@ -17,7 +17,6 @@ import com.hcl.service.CheckoutService;
 import com.stripe.exception.StripeException;
 import com.stripe.model.PaymentIntent;
 
-@CrossOrigin("https://horshambags-frontend.azurewebsites.net/")
 @RestController
 @RequestMapping("/api/checkout")
 public class CheckoutController {
@@ -33,6 +32,7 @@ public class CheckoutController {
 		this.checkoutService = checkoutService;
 	}
 	
+	@CrossOrigin("https://horshambags-frontend.azurewebsites.net")
 	@PostMapping("/purchase")
 	public PurchaseResponse placeOrder(@RequestBody Purchase purchase) {
 		
@@ -40,6 +40,7 @@ public class CheckoutController {
 		return purchaseResponse;
 	}
 	
+	@CrossOrigin("https://horshambags-frontend.azurewebsites.net")
 	@PostMapping("/payment-intent")
 	public ResponseEntity<String> createPaymentIntent(@RequestBody PaymentInfo paymentInfo) throws StripeException {
 		
