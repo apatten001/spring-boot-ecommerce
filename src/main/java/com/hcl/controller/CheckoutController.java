@@ -33,7 +33,6 @@ public class CheckoutController {
 		this.checkoutService = checkoutService;
 	}
 	
-	@CrossOrigin(origins = "https://localhost:4200")
 	@PostMapping("/purchase")
 	public PurchaseResponse placeOrder(@RequestBody Purchase purchase) {
 		
@@ -41,7 +40,6 @@ public class CheckoutController {
 		return purchaseResponse;
 	}
 	
-	@CrossOrigin(origins = "https://localhost:4200")
 	@PostMapping("/payment-intent")
 	public ResponseEntity<String> createPaymentIntent(@RequestBody PaymentInfo paymentInfo) throws StripeException {
 		
