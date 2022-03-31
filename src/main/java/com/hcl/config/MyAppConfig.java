@@ -19,7 +19,7 @@ public class MyAppConfig implements WebMvcConfigurer {
 	public void addCorsMappings(CorsRegistry cors){
 		
 		// set up cors mapping
-		cors.addMapping(basePath).allowedOrigins(theAllowedOrigins);
+		cors.addMapping(basePath + "/**").allowedOrigins(theAllowedOrigins);
 		
 		
 	}
