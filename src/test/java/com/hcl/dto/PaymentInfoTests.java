@@ -1,4 +1,4 @@
-package com.hcl;
+package com.hcl.dto;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;

@@ -15,7 +15,7 @@ import org.springframework.stereotype.Service;
 
 import com.hcl.dao.CustomerRepository;
 import com.hcl.dto.PaymentInfo;
-import com.hcl.dto.Purchase;
+import com.hcl.dto.PurchaseDto;
 import com.hcl.dto.PurchaseResponse;
 import com.hcl.entity.Customer;
 import com.hcl.entity.Order;
@@ -46,7 +46,7 @@ public class CheckoutServiceImpl implements CheckoutService{
 
 	@Override
 	@Transactional
-	public PurchaseResponse placeOrder(Purchase purchase) {
+	public PurchaseResponse placeOrder(PurchaseDto purchase) {
 		
 		// retrieve the order info from the dto
 		

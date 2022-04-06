@@ -1,4 +1,4 @@
-package com.hcl;
+package com.hcl.dto;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -8,22 +8,22 @@ import java.util.Set;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import com.hcl.dto.Purchase;
+import com.hcl.dto.PurchaseDto;
 import com.hcl.entity.Address;
 import com.hcl.entity.Customer;
 import com.hcl.entity.Order;
 import com.hcl.entity.OrderItem;
 
 @SpringBootTest
-public class PurchaseTests {
+public class PurchaseDtoTests {
 	
 	
 	@Test
 	public void purchaseTest() {
 		
-		Purchase purchase = new Purchase();
+		PurchaseDto purchase = new PurchaseDto();
 		
-		Purchase purchase2 = purchase;
+		PurchaseDto purchase2 = purchase;
 		
 		purchase.equals(purchase2);
 		
