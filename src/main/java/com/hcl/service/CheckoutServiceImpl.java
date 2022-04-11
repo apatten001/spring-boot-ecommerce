@@ -64,6 +64,7 @@ public class CheckoutServiceImpl implements CheckoutService{
 		Set<OrderItem> orderItems = purchase.getOrderItems();
 		orderItems.forEach(item -> order.add(item));
 		
+		/*
 		// decrement unitsInStock
         for(OrderItem orders:orderItems) {
         	Optional<Product> orderFromDB = productRepository.findById(orders.getProductId());
@@ -72,6 +73,7 @@ public class CheckoutServiceImpl implements CheckoutService{
 	        	orderFromDB.get().setUnitsInStock(decrementAmount);
 	        	productRepository.save(orderFromDB.get());}
         }
+        **/
 		
 		
 		
