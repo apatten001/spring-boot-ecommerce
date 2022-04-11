@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 import java.util.Set;
 import java.util.UUID;
 
@@ -14,12 +15,14 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import com.hcl.dao.CustomerRepository;
+import com.hcl.dao.ProductRepository;
 import com.hcl.dto.PaymentInfo;
 import com.hcl.dto.PurchaseDto;
 import com.hcl.dto.PurchaseResponse;
 import com.hcl.entity.Customer;
 import com.hcl.entity.Order;
 import com.hcl.entity.OrderItem;
+import com.hcl.entity.Product;
 import com.stripe.Stripe;
 import com.stripe.exception.StripeException;
 import com.stripe.model.PaymentIntent;
@@ -28,6 +31,7 @@ import com.stripe.model.PaymentIntent;
 public class CheckoutServiceImpl implements CheckoutService{
 	
 	private CustomerRepository customerRepository;
+	private ProductRepository productRepository;
 	
 	
 	// inject customer Repo into the Customer service
@@ -59,6 +63,15 @@ public class CheckoutServiceImpl implements CheckoutService{
 		// populate orders with orderItem's
 		Set<OrderItem> orderItems = purchase.getOrderItems();
 		orderItems.forEach(item -> order.add(item));
+		
+		// decrement unitsInStock
+        for(OrderItem orders:orderItems) {
+        	Optional<Product> orderFromDB = productRepository.findById(orders.getProductId());
+        	if(orderFromDB.isPresent()) {
+	        	int decrementAmount = orderFromDB.get().getUnitsInStock() - orders.getQuantity();
+	        	orderFromDB.get().setUnitsInStock(decrementAmount);
+	        	productRepository.save(orderFromDB.get());}
+        }
 		
 		
 		
