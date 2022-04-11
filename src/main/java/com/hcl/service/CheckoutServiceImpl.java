@@ -35,11 +35,11 @@ public class CheckoutServiceImpl implements CheckoutService{
 	
 	
 	// inject customer Repo into the Customer service
-	public CheckoutServiceImpl(CustomerRepository customerRepository,
+	public CheckoutServiceImpl(CustomerRepository customerRepository, ProductRepository productRepository,
 								@Value("${stripe.key.secret}") String secretKey) {
 		
 		this.customerRepository = customerRepository;
-		
+		this.productRepository = productRepository;
 		// initialize Stripe API with the secret key
 		Stripe.apiKey = secretKey;
 		
@@ -64,16 +64,13 @@ public class CheckoutServiceImpl implements CheckoutService{
 		Set<OrderItem> orderItems = purchase.getOrderItems();
 		orderItems.forEach(item -> order.add(item));
 		
-		/*
-		// decrement unitsInStock
-        for(OrderItem orders:orderItems) {
+		for(OrderItem orders:orderItems) {
         	Optional<Product> orderFromDB = productRepository.findById(orders.getProductId());
         	if(orderFromDB.isPresent()) {
 	        	int decrementAmount = orderFromDB.get().getUnitsInStock() - orders.getQuantity();
 	        	orderFromDB.get().setUnitsInStock(decrementAmount);
 	        	productRepository.save(orderFromDB.get());}
         }
-        **/
 		
 		
 		
