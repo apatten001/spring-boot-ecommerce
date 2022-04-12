@@ -16,5 +16,9 @@ public interface PurchaseMapper {
 	PurchaseDto purchaseToPurchaseDto(Purchase purchase);
 	
 	Purchase purchaseDtoToPurchase(PurchaseDto purchaseDto);
+	
+	
+	
+	
 
 }
